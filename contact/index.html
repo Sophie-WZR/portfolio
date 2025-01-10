@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Zhuoran Wang</title>
-    <link rel="stylesheet" href="../style.css"> <!-- Ensure path is correct -->
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <nav>
         <ul>
             <li><a href="../index.html">Home</a></li>
-            <li><a href="../projects/index.html">Projects</a></li>
-            <li><a href="index.html">Contact</a></li>
-            <li><a href="https://github.com/Sophie-WZR" target="_blank">GitHub</a></li>
+            <li><a href="../projects/">Projects</a></li>
+            <li><a href="../contact/">Contact</a></li>
+            <li><a href="https://github.com/YourGitHubUsername" target="_blank">GitHub</a></li>
         </ul>
     </nav>
-    <h1>Contact</h1>
-    <p>If you wish to reach out, feel free to contact me through the information provided here.</p>
+    <h1>Contact Me</h1>
+    <form action="mailto:zhw074@ucsd.edu" method="POST" enctype="text/plain">
+        <label>Email:<br><input type="email" name="email"></label><br>
+        <label>Subject:<br><input type="text" name="subject"></label><br>
+        <label>Message:<br><textarea name="body"></textarea></label><br>
+        <button>Send Email</button>
+    </form>
 </body>
 </html>
