@@ -41,7 +41,9 @@ nav a:hover {
 }
 
 form {
-  display: flex;
-  gap: 0.5em;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  font: inherit;
+  gap: 1em;
   margin-bottom: 1em;
 }

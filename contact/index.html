@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,6 +21,40 @@
         <label>Message:<br><textarea name="body"></textarea></label><br>
         <button>Send Email</button>
     </form>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Zhuoran Wang</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav>
+        <a href="../index.html" aria-label="Home">Home</a>
+        <a href="../projects/" aria-label="Projects">Projects</a>
+        <a class="current" href="../contact/" aria-label="Contact">Contact</a>
+        <a href="../resume/index.html" aria-label="Resume">Resume</a>
+        <a href="https://github.com/Sophie-WZR" target="_blank" aria-label="GitHub Profile">GitHub</a>
+    </nav>
+    
+    <main>
+        <h1>Contact Me</h1>
+        <form action="mailto:zhw074@ucsd.edu" method="POST" enctype="text/plain">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" placeholder="Your email" required><br><br>
+
+            <label for="subject">Subject:</label><br>
+            <input type="text" id="subject" name="subject" placeholder="Subject of your message" required><br><br>
+
+            <label for="body">Message:</label><br>
+            <textarea id="body" name="body" placeholder="Write your message here" rows="5" required></textarea><br><br>
+
+            <button type="submit">Send Email</button>
+        </form>
+    </main>
 </body>
 </html>
 
