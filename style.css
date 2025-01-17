@@ -1,7 +1,7 @@
 
 /* Root styles */
 :root {
-  --color-accent: oklch(65% 50% 0);
+  --color-accent: oklch(94.1% 6.1% 270);
 }
 
 body {
@@ -16,26 +16,32 @@ body {
   
 nav {
     display: flex;
-    nav a {
-      flex: 1;
-      text-decoration: none;
-      color: inherit;
-      text-align: center;
-      padding: 0.5rem;
-      border-bottom: 1px solid okich(80% 3% 200);
-    }
+    border-bottom:1px solid oklch(94.1% 6.1% 270);
+    margin-bottom: 1em;
+}
 
+nav a {
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  padding: 0.5rem;
+}
 
-    nav a:hover {
-      border-bottom: 0.4em solid var(--color-accent);
-      background-color: oklch(95% 5% from var(--color-accent));
-      padding-bottom: 0.3em;
-    }
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  background-color: oklch(95% 5% from var(--color-accent));
+  padding-bottom: 0.3em;
+}
 
-    .current-page {
-      font-weight: bold;
-      border-bottom: 0.4em solid oklch(80% 3% 200);
-      padding-bottom: 0.1em;
-    }
+.current {
+  font-weight: bold;
+  border-bottom: 0.4em solid #f6f4c7;
+  padding-bottom: 0.3em;
+}
 
+form {
+  display: flex;
+  gap: 0.5em;
+  margin-bottom: 1em;
 }
