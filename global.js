@@ -71,3 +71,30 @@ let pages = [
     nav.append(a);
 }
 
+// Step 5
+// Reference the form element
+const form = document.querySelector("#contact-form");
+
+// Add a listener to handle form submission
+form?.addEventListener("submit", (event) => {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Create a FormData object from the form
+  const data = new FormData(form);
+
+  // Start building the mailto URL
+  let url = form.action + "?";
+
+  // Iterate over each field in the form data
+  for (let [name, value] of data) {
+    // Encode each value and append it to the URL
+    url += `${encodeURIComponent(name)}=${encodeURIComponent(value)}&`;
+  }
+
+  // Remove the trailing '&' from the URL
+  url = url.slice(0, -1);
+
+  // Open the URL in the user's email client
+  location.href = url;
+});
