@@ -70,6 +70,19 @@ let pages = [
 
     nav.append(a);
 }
+// Step 4
+document.body.insertAdjacentHTML(
+    'afterbegin',
+    `
+      <label class="color-scheme">
+          Theme:
+          <select>
+            <option value="light dark">Automatic</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+      </label>`
+  );
 
 // Step 5
 // Reference the form element
@@ -98,3 +111,4 @@ form?.addEventListener("submit", (event) => {
   // Open the URL in the user's email client
   location.href = url;
 });
+
