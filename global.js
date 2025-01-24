@@ -76,13 +76,36 @@ document.body.insertAdjacentHTML(
     `
       <label class="color-scheme">
           Theme:
-          <select>
-            <option value="light dark">Automatic</option>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
+          <select id="color-scheme-select">
+                <option value="light dark">Automatic</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
           </select>
       </label>`
   );
+
+  const select = document.getElementById('color-scheme-select');
+
+
+if (localStorage.colorScheme) {
+    // if there is already a saved color
+    const savedScheme = localStorage.colorScheme;
+    document.documentElement.style.setProperty('color-scheme', savedScheme); // Apply the saved scheme
+    select.value = savedScheme; // Update the dropdown to reflect the saved preference
+}
+
+select.addEventListener('input', function (event) {
+    const selectedScheme = event.target.value;
+
+    console.log('Color scheme changed to', selectedScheme);
+
+    // Save the user's preference to localStorage
+    localStorage.colorScheme = selectedScheme;
+
+    console.log('color scheme changed to', event.target.value);
+    
+    document.documentElement.style.setProperty('color-scheme', selectedScheme);
+});  
 
 // Step 5
 // Reference the form element
