@@ -2,7 +2,7 @@
 /* Root styles */
 :root {
   --color-accent: oklch(94.1% 6.1% 270);
-  --border-bottom-color: oklch(50% 10% 200 / 40%);
+  --border-bottom-color:  oklch(0.68 0.09 276.51 / 0.4);
   color-scheme: light dark;
 }
 
@@ -18,7 +18,7 @@ body {
   
 nav {
     display: flex;
-    border-bottom:1px solid var(--border-color);
+    border-bottom:1px solid var(--border-bottom-color);
     margin-bottom: 1em;
 }
 
@@ -32,7 +32,7 @@ nav a {
 
 nav a:hover {
   border-bottom: 0.4em solid var(--color-accent);
-  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 70%);
   padding-bottom: 0.3em;
 }
 
