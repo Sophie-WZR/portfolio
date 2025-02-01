@@ -96,3 +96,18 @@ h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
   padding: 0.5em;
 }
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Creates four columns, each taking equal space */
+  grid-template-rows: auto auto; /* Creates two rows */
+  gap: 10px; /* Optional: adds space between the columns and rows */
+}
+
+#profile-stats dt {
+  grid-row: 1; /* Places all dt elements in the first row */
+}
+
+#profile-stats dd {
+  grid-row: 2; /* Places all dd elements in the second row */
+}
