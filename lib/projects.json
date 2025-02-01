@@ -2,22 +2,22 @@
     {
         "title": "HPGe Detector Waveform Classification and Energy Reconstruction",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur facere ratione eaque porro expedita ipsa, vitae suscipit inventore, consequuntur cupiditate voluptatum? Temporibus porro culpa natus esse, saepe eius rerum consequatur."
+        "description": "Developed a machine learning model that classifies neutrino signals from noise in HPGe detectors, utilizing feature extraction from time series data of 3,000 elementary particles, achieving a robust ROC AUC score of 0.84."
     },
     {
         "title": "Esports Dynamics: Predictive Analytics in League of Legends Leagues",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Consequatur, ullam. Suscipit ipsam alias eos ex error aliquam numquam doloremque voluptas obcaecati quos saepe accusamus provident harum amet nesciunt earum possimus deleniti, corrupti repellat, ipsum minus eveniet reprehenderit consectetur!"
+        "description": "Leveraged K-Nearest Neighbors (KNN) to categorize player roles in professional esports leagues based on performance metrics like Damage Per Minute (DPM) and Kills Per Minute (KPM), managing a dataset of over 150,000 entries to enhance the fairness and accuracy of league assessments through rigorous statistical and machine learning evaluations."
     },
     {
         "title": "Basic Image Processing Functionalities and Object Oriented Programming",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Unde possimus nulla voluptatibus, sit similique earum ipsam maiores voluptates maxime ipsa vero dolorem facilis animi corporis perferendis? Quos repudiandae eaque atque dolores modi molestias laboriosam itaque pariatur ipsa. Ex?"
+        "description": "Created an extensible image processing system using Python that incorporates essential techniques such as color negation, grayscale conversion, rotation, and blurring, and includes a KNN classifier for accurate image label prediction."
     },
     {
         "title": "K-Nearest Neighbors Classifier for Digit Recognition",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Quae doloribus, officia ad natus quibusdam esse libero eaque maxime quam dicta sint facilis modi mollitia? Id nam facere quasi hic rem omnis iste et provident deleniti. Eveniet, accusantium enim."
+        "description": "Engineered a Java-based K-Nearest Neighbors classifier to efficiently categorize handwritten digits from the MNIST dataset, featuring a custom-built 4-ary min-heap for optimized neighbor retrieval and reaching a high accuracy of 98.67% on 1,000 test images."
     },
     {
         "title": "Aperiam placeat consectetur cum.",
