@@ -97,12 +97,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.5em;
 }
 
-#profile-stats dl {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Creates four columns, each taking equal space */
-  grid-template-rows: auto auto; /* Creates two rows */
-  gap: 10px; /* Optional: adds space between the columns and rows */
-}
+
 
 #profile-stats dt {
   grid-row: 1; /* Places all dt elements in the first row */
@@ -110,4 +105,16 @@ h1, h2, h3, h4, h5, h6 {
 
 #profile-stats dd {
   grid-row: 2; /* Places all dd elements in the second row */
+}
+
+
+dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: left;
+}
+
+#profile-stats {
+  text-align: center;
+  font-family: Arial, sans-serif;
 }
