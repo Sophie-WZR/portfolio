@@ -158,3 +158,14 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     containerElement.appendChild(article);
   });
 }
+
+
+export async function fetchGitHubData(username) {
+  const url = `https://api.github.com/users/sophie-wzr`;
+  try {
+      // Using fetchJSON to utilize the existing JSON fetching and error handling
+      return fetchJSON(url);
+  } catch (error) {
+      console.error('Failed to fetch GitHub data:', error);
+  }
+}
