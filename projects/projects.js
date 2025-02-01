@@ -1,20 +1,9 @@
+import { fetchJSON, renderProjects, countProjects } from '../global.js';
 
-import { fetchJSON, renderProjects } from '../global.js';
+const projects = await fetchJSON('../lib/projects.json');
 
-async function loadAndDisplayProjects() {
-    try {
-        const projects = await fetchJSON('../lib/projects.json'); // Load project data
-        const projectsContainer = document.querySelector('.projects'); // Select the container
+const projectsContainer = document.querySelector('.projects');
+renderProjects(projects, projectsContainer, 'h2');
 
-        if (projects && projects.length > 0) {
-            renderProjects(projects, projectsContainer, 'h2'); // Render projects
-        } else {
-            projectsContainer.innerHTML = '<p>No projects available.</p>'; // Handle empty or invalid data
-        }
-    } catch (error) {
-        console.error('Failed to load projects:', error);
-        document.querySelector('.projects').innerHTML = '<p>Error loading projects.</p>'; // Error handling
-    }
-}
-
-loadAndDisplayProjects();
+const title = document.querySelector('h1');
+countProjects(projects, title)
