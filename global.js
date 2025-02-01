@@ -130,42 +130,108 @@ select.addEventListener('input', function (event) {
   });
 
 
-  export async function fetchJSON(url) {
-    try {
-        // Fetch the JSON file from the given URL
-        const response = await fetch(url);
-        if (!response.ok) {
+//   export async function fetchJSON(url) {
+//     try {
+//         // Fetch the JSON file from the given URL
+//         const response = await fetch(url);
+//         if (!response.ok) {
+//           throw new Error(`Failed to fetch projects: ${response.statusText}`);
+//       }
+//         const data = await response.json();
+//         return data; 
+
+//     } catch (error) {
+//         console.error('Error fetching or parsing JSON data:', error);
+//     }
+// }
+
+// // Function to render projects dynamically
+// export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+//   containerElement.innerHTML = ''; // Clear existing content
+//   projects.forEach(project => {
+//     const article = document.createElement('article');
+//     article.innerHTML = `
+//       <${headingLevel}>${project.title}</${headingLevel}>
+//       <img src="${project.image}" alt="${project.title}">
+//       <p>${project.description}</p>
+//     `;
+//     containerElement.appendChild(article);
+//   });
+// }
+
+
+// export async function fetchGitHubData(username) {
+//   const url = `https://api.github.com/users/sophie-wzr`;
+//   try {
+//       // Using fetchJSON to utilize the existing JSON fetching and error handling
+//       return fetchJSON(url);
+//   } catch (error) {
+//       console.error('Failed to fetch GitHub data:', error);
+//   }
+// }
+
+export async function fetchJSON(url) {
+  try {
+      // Fetch the JSON file from the given URL
+      const response = await fetch(url);
+
+      if (!response.ok) {
           throw new Error(`Failed to fetch projects: ${response.statusText}`);
       }
-        const data = await response.json();
-        return data; 
+      console.log(response)
+      
+      const data = await response.json();
+      return data; 
 
-    } catch (error) {
-        console.error('Error fetching or parsing JSON data:', error);
-    }
+  } catch (error) {
+      console.error('Error fetching or parsing JSON data:', error);
+  }
 }
 
-// Function to render projects dynamically
-export function renderProjects(projects, containerElement, headingLevel = 'h2') {
-  containerElement.innerHTML = ''; // Clear existing content
-  projects.forEach(project => {
-    const article = document.createElement('article');
-    article.innerHTML = `
-      <${headingLevel}>${project.title}</${headingLevel}>
-      <img src="${project.image}" alt="${project.title}">
-      <p>${project.description}</p>
-    `;
-    containerElement.appendChild(article);
+export function renderProjects(project, containerElement, headingLevel = 'h2') {
+  // Your code will go here
+  if (!(containerElement instanceof HTMLElement)) {
+      console.error('Invalid container element provided.');
+      return;
+  } // make sure containerElement is a valid DOM
+
+  // Ensure headingLevel is valid (only allow h1-h6)
+  if (!/^h[1-6]$/.test(headingLevel)) {
+      console.warn(`Invalid heading level "${headingLevel}". Defaulting to h2.`);
+      headingLevel = 'h2'; // Default to h2 if input is invalid
+  }
+
+  containerElement.innerHTML = ''; //outside loop
+  // makesure its container empty
+  project.forEach(p => {
+      const title = p.title || 'Untitled Project';
+      const image = p.image || 'https://vis-society.github.io/labs/2/images/empty.svg';
+      //image coming
+      const description = p.description || 'No description available.';
+
+      const article = document.createElement('article');
+      article.innerHTML = `
+      <${headingLevel}>${title}</${headingLevel}>
+      <img src="${image}" alt="${title}" onerror="this.src='fallback-image.jpg';">
+      <p>${description}</p>
+      `;
+
+      containerElement.appendChild(article);
   });
 }
 
-
-export async function fetchGitHubData(username) {
-  const url = `https://api.github.com/users/sophie-wzr`;
-  try {
-      // Using fetchJSON to utilize the existing JSON fetching and error handling
-      return fetchJSON(url);
-  } catch (error) {
-      console.error('Failed to fetch GitHub data:', error);
+export function countProjects(project, titleElement) {
+  // Check if projects is an array
+  if (Array.isArray(project)) {
+      const projectCount = project.length;
+      titleElement.textContent = `${projectCount} Projects`;
+  } else {
+      console.error('Invalid projects data');
   }
 }
+
+export async function fetchGitHubData(username) {
+  return fetchJSON(`https://api.github.com/users/${username}`);
+}
+
+const profileStats = document.querySelector('#profile-stats');
