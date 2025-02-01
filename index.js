@@ -7,7 +7,7 @@ const projectsContainer = document.querySelector('.projects');
 
 renderProjects(latestProjects, projectsContainer, 'h2');
 
-const githubData = await fetchGitHubData('JaydenHuang8');
+const githubData = await fetchGitHubData('Sophie-WZR');
 
 const profileStats = document.querySelector('#profile-stats');
 
