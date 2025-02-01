@@ -6,18 +6,6 @@ function $$(selector, context = document) {
 
 const navLinks = $$("nav a");
 
-// Step 2
-// let currentLink = Array.from(navLinks).find(
-//     (a) => a.host === location.host && a.pathname === location.pathname
-// );
-  
-
-// console.log("Current Link:", currentLink);
-
-// if (currentLink) {
-//     // or if (currentLink !== undefined)
-//     currentLink.classList.add('current');
-// }
 
 // Step 3
 
@@ -140,3 +128,33 @@ select.addEventListener('input', function (event) {
     console.log('color scheme changed to', event.target.value);
     document.documentElement.style.setProperty('color-scheme', event.target.value);
   });
+
+
+  export async function fetchJSON(url) {
+    try {
+        // Fetch the JSON file from the given URL
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch projects: ${response.statusText}`);
+      }
+        const data = await response.json();
+        return data; 
+
+    } catch (error) {
+        console.error('Error fetching or parsing JSON data:', error);
+    }
+}
+
+// Function to render projects dynamically
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+  containerElement.innerHTML = ''; // Clear existing content
+  projects.forEach(project => {
+    const article = document.createElement('article');
+    article.innerHTML = `
+      <${headingLevel}>${project.title}</${headingLevel}>
+      <img src="${project.image}" alt="${project.title}">
+      <p>${project.description}</p>
+    `;
+    containerElement.appendChild(article);
+  });
+}
