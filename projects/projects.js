@@ -13,16 +13,37 @@ countProjects(projects, title)
 const svg = d3.select('#projects-plot')
   .attr('viewBox', '-50 -50 100 100');
 
-// Create an arc generator
-let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
-
-// Create a full circle path
-let pathData = arcGenerator({
-  startAngle: 0,
-  endAngle: 2 * Math.PI
-});
-
-// Append path to the SVG
-svg.append('path')
-  .attr('d', pathData)
-  .attr('fill', 'red');
+// Data for the pie chart with labels
+let data = [
+    { value: 1, label: 'Apples' },
+    { value: 2, label: 'Oranges' },
+    { value: 3, label: 'Mangos' },
+    { value: 4, label: 'Pears' },
+    { value: 5, label: 'Limes' },
+    { value: 5, label: 'Cherries' }
+  ];
+  
+  // Create an arc generator
+  let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
+  
+  // Create pie slice generator
+  let sliceGenerator = d3.pie().value(d => d.value);
+  let arcData = sliceGenerator(data);
+  
+  // Colors scale
+  let colors = d3.scaleOrdinal(d3.schemeTableau10);
+  
+  // Generate and append paths for pie slices
+  arcData.forEach((d, i) => {
+    svg.append('path')
+      .attr('d', arcGenerator(d))
+      .attr('fill', colors(i));
+  });
+  
+  // Add legend to the visualization
+  const legend = d3.select('.legend');
+  data.forEach((d, i) => {
+      legend.append('li')
+            .style('color', colors(i))
+            .html(`<span class="swatch" style="background-color:${colors(i)};"></span> ${d.label} (${d.value})`);
+  });
