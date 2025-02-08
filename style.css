@@ -122,3 +122,9 @@ dd {
   grid-row: 2;
   text-align: left;
 }
+
+#projects-pie-plot {
+  max-width: 20em;   /* Limits the size of the SVG to ensure it does not become too large */
+  margin-block: 2em; /* Adds vertical spacing above and below the SVG */
+  overflow: visible; /* Ensures nothing is clipped if elements like tooltips go outside the bounds */
+}
