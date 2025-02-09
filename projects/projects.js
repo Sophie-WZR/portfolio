@@ -118,9 +118,6 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
 //   }
 // }
 
-import { fetchJSON, renderProjects, countProjects } from '../global.js';
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
-
 // Fetch project data and initialize everything on page load
 fetchJSON('../lib/projects.json').then(projects => {
     const projectsContainer = document.querySelector('.projects');
