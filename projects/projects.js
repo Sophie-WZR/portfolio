@@ -111,3 +111,4 @@ function filterAndRenderProjects(newData) {
       renderProjects(filteredProjects, projectsContainer, 'h2'); // Update the project list
   }
 }
+
