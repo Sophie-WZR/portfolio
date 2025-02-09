@@ -1,13 +1,13 @@
-import { fetchJSON, renderProjects, countProjects } from '../global.js';
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
+// import { fetchJSON, renderProjects, countProjects } from '../global.js';
+// import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
 
-const projects = await fetchJSON('../lib/projects.json');
+// const projects = await fetchJSON('../lib/projects.json');
 
-const projectsContainer = document.querySelector('.projects');
-renderProjects(projects, projectsContainer, 'h2');
+// const projectsContainer = document.querySelector('.projects');
+// renderProjects(projects, projectsContainer, 'h2');
 
-const title = document.querySelector('h1');
-countProjects(projects, title)
+// const title = document.querySelector('h1');
+// countProjects(projects, title)
 
 // // Assuming 'projects-plot' is the id of the SVG container in your HTML
 // const svg = d3.select('#projects-plot')
@@ -48,6 +48,23 @@ countProjects(projects, title)
 //             .html(`<span class="swatch" style="background-color:${colors(i)};"></span> ${d.label} (${d.value})`);
 //   });
 
+// import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
+
+// let data = [1, 2, 3]; // Example data
+// let pie = d3.pie()(data); // Convert data to pie slices
+
+// let arcGenerator = d3.arc()
+//   .innerRadius(0)
+//   .outerRadius(50); // Define the size of the pie chart
+
+// // Render pie chart slices
+// d3.select('#projects-plot')
+//   .selectAll('path')
+//   .data(pie)
+//   .enter()
+//   .append('path')
+//   .attr('d', arcGenerator)
+//   .attr('fill', (d, i) => ['red', 'blue', 'green'][i]); // Assign colors
 
 
 async function main() {
