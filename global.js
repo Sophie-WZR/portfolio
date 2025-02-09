@@ -148,6 +148,31 @@ export async function fetchJSON(url) {
   }
 }
 
+
+
+function renderProjects(projects, container) {
+  projects.forEach(project => {
+      const projectElement = document.createElement('div');
+      projectElement.className = 'project';
+
+      const titleElement = document.createElement('h2');
+      titleElement.textContent = project.title;
+
+      const descriptionElement = document.createElement('p');
+      descriptionElement.textContent = project.description;
+
+      const yearElement = document.createElement('p');
+      yearElement.textContent = `Year: ${project.year}`;
+      yearElement.className = 'project-year';  // Assign a class for custom styling
+
+      projectElement.appendChild(titleElement);
+      projectElement.appendChild(descriptionElement);
+      projectElement.appendChild(yearElement);
+
+      container.appendChild(projectElement);
+  });
+}
+
 export function renderProjects(project, containerElement, headingLevel = 'h2') {
   // Your code will go here
   if (!(containerElement instanceof HTMLElement)) {
@@ -163,28 +188,29 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
 
 
   containerElement.innerHTML = ''; //outside loop
-  // makesure its container empty
   project.forEach(p => {
       const title = p.title || 'Untitled Project';
       const image = p.image || 'https://vis-society.github.io/labs/2/images/empty.svg';
       const year = p.year || 'unknown';
+      //image coming
+      //image coming
       const description = p.description || 'No description available.';
 
       const article = document.createElement('article');
       article.innerHTML = `
       <${headingLevel}>${title}</${headingLevel}>
       <img src="${image}" alt="${title}" onerror="this.src='fallback-image.jpg';">
-      <p>${description}</p>
       <div>
-        <p>${description}</p>
-        <br />
-        <p>c. ${year}</p>
+          <p>${description}</p>
+          <br />
+          <p>c. ${year}</p>
       </div>
       `;
-
+      
       containerElement.appendChild(article);
   });
 }
+
 
 export function countProjects(project, titleElement) {
   // Check if projects is an array
