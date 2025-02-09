@@ -1,13 +1,13 @@
-// import { fetchJSON, renderProjects, countProjects } from '../global.js';
-// import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
+import { fetchJSON, renderProjects, countProjects } from '../global.js';
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
 
-// const projects = await fetchJSON('../lib/projects.json');
+const projects = await fetchJSON('../lib/projects.json');
 
-// const projectsContainer = document.querySelector('.projects');
-// renderProjects(projects, projectsContainer, 'h2');
+const projectsContainer = document.querySelector('.projects');
+renderProjects(projects, projectsContainer, 'h2');
 
-// const title = document.querySelector('h1');
-// countProjects(projects, title)
+const title = document.querySelector('h1');
+countProjects(projects, title)
 
 // // Assuming 'projects-plot' is the id of the SVG container in your HTML
 // const svg = d3.select('#projects-plot')
@@ -23,8 +23,8 @@
 //     { value: 5, label: 'Cherries' }
 //   ];
   
-//   // Create an arc generator
-//   let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
+  // Create an arc generator
+  let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
   
 //   // Create pie slice generator
 //   let sliceGenerator = d3.pie().value(d => d.value);
@@ -49,8 +49,6 @@
 //   });
 
 
-import { fetchJSON, renderProjects, countProjects } from '../global.js';
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
 
 async function main() {
     const projects = await fetchJSON('../lib/projects.json');
@@ -129,4 +127,4 @@ async function main() {
     }
 }
 
-main();
+main()

@@ -1,26 +1,22 @@
-
 /* Root styles */
 :root {
   --color-accent: oklch(94.1% 6.1% 270);
-  --border-bottom-color:  oklch(0.68 0.09 276.51 / 0.4);
+  --border-bottom-color: oklch(0.68 0.09 276.51 / 0.4);
   color-scheme: light dark;
 }
 
 body {
-    /* Set line height to 1.5 times the font size
-         and use the OS’s UI font as the website font
-       */
-    margin-inline: auto;
-    max-width: 100ch;
-    padding: 1rem;
-    font: 100%/1.5 system-ui;
-  }
-  
+  margin-inline: auto;
+  max-width: 100ch;
+  padding: 1rem;
+  font: 100%/1.5 system-ui;
+}
+
 nav {
-    display: flex;
-    border-bottom:1px solid var(--border-bottom-color);
-    margin-bottom: 1em;
-    margin-top: 1em;
+  display: flex;
+  border-bottom: 1px solid var(--border-bottom-color);
+  margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 nav a {
@@ -79,16 +75,12 @@ h1 {
   font-size: 400%;
 }
 
-h2 {
-  margin: 0;
-}
-
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
 }
 
-.color-scheme{
+.color-scheme {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -97,14 +89,33 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.5em;
 }
 
-#profile-stats {
-  text-align: center;
-  font-family: Arial, sans-serif;
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+  overflow: visible;
+}
+
+path {
+  transition: 300ms;
+  cursor: pointer;
+}
+
+svg:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+.selected,
+.legend .selected {
+  --color: oklch(60% 45% 0) !important;
+}
+
+.selected path {
+  fill: var(--color);
 }
 
 dl {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Four equal columns */
+  grid-template-columns: repeat(4, 1fr);
   text-align: left;
 }
 
@@ -123,8 +134,21 @@ dd {
   text-align: left;
 }
 
-#projects-pie-plot {
-  max-width: 20em;   /* Limits the size of the SVG to ensure it does not become too large */
-  margin-block: 2em; /* Adds vertical spacing above and below the SVG */
-  overflow: visible; /* Ensures nothing is clipped if elements like tooltips go outside the bounds */
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.legend .swatch {
+  width: 1em;
+  height: 1em;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: inline-block;
 }
