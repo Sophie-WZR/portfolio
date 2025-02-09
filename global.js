@@ -148,31 +148,6 @@ export async function fetchJSON(url) {
   }
 }
 
-
-
-function renderProjects(projects, container) {
-  projects.forEach(project => {
-      const projectElement = document.createElement('div');
-      projectElement.className = 'project';
-
-      const titleElement = document.createElement('h2');
-      titleElement.textContent = project.title;
-
-      const descriptionElement = document.createElement('p');
-      descriptionElement.textContent = project.description;
-
-      const yearElement = document.createElement('p');
-      yearElement.textContent = `Year: ${project.year}`;
-      yearElement.className = 'project-year';  // Assign a class for custom styling
-
-      projectElement.appendChild(titleElement);
-      projectElement.appendChild(descriptionElement);
-      projectElement.appendChild(yearElement);
-
-      container.appendChild(projectElement);
-  });
-}
-
 export function renderProjects(project, containerElement, headingLevel = 'h2') {
   // Your code will go here
   if (!(containerElement instanceof HTMLElement)) {
