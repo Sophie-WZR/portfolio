@@ -24,7 +24,7 @@
 //   ];
   
   // Create an arc generator
-  let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
+//   let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
   
 //   // Create pie slice generator
 //   let sliceGenerator = d3.pie().value(d => d.value);
