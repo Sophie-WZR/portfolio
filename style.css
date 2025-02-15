@@ -236,3 +236,9 @@ path {
   margin-left: 20px;
   margin-bottom: 10px;
 }
+
+
+.gridlines .tick line {
+  stroke: #ccc;  /* Light grey color for gridlines */
+  stroke-opacity: 0.7;  /* Slightly transparent */
+}

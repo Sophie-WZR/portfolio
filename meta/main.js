@@ -58,10 +58,18 @@ function createScatterplot() {
         .domain([0, 24])
         .range([height - margin.bottom, margin.top]);
 
+    // Create gridlines BEFORE the axes for better layering
+    const gridlines = svg.append('g')
+        .attr('class', 'gridlines')
+        .attr('transform', `translate(${margin.left}, 0)`)
+        .call(d3.axisLeft(yScale)
+            .tickSize(-width + margin.left + margin.right)
+            .tickFormat(''));
+
     // Create and add axes
     const xAxis = d3.axisBottom(xScale);
     const yAxis = d3.axisLeft(yScale)
-        .tickFormat((d) => `${d}:00`);  // Format Y-axis ticks as hours
+        .tickFormat((d) => `${d}:00`); // Format Y-axis ticks as hours
 
     svg.append('g')
         .attr('transform', `translate(0, ${height - margin.bottom})`)
