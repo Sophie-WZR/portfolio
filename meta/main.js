@@ -1,7 +1,12 @@
 let data = [];
 let commits = [];  // Declare commits globally as we will use it extensively
 
-// Function to load data from a CSV file and process commits
+// Dimensions for the scatter plot
+const width = 1000;
+const height = 600;
+const margin = { top: 10, right: 10, bottom: 30, left: 20 };  // Margins for axes
+
+// Function to load data from a CSV file, process commits, and create a scatter plot
 async function loadData() {
     data = await d3.csv('loc.csv', (row) => ({
         ...row,
@@ -12,26 +17,8 @@ async function loadData() {
         datetime: new Date(row.datetime)  // Converts 'datetime' string to Date object
     }));
 
-    displayStats();  // Call displayStats to show the summary
-}
-
-// Function to display summary stats
-function displayStats() {
-    // Process commits first
-    processCommits();
-
-    // Create the dl element for displaying stats
-    const dl = d3.select('#stats').append('dl').attr('class', 'stats');
-
-    // Add total LOC
-    dl.append('dt').html('Total <abbr title="Lines of code">LOC</abbr>');
-    dl.append('dd').text(data.length);
-
-    // Add total commits
-    dl.append('dt').text('Total commits');
-    dl.append('dd').text(commits.length);
-
-    // Add more stats as needed...
+    processCommits();  // Process commits after loading data
+    createScatterplot();  // Create the scatter plot
 }
 
 // Function to process commits data
@@ -52,6 +39,48 @@ function processCommits() {
                 totalLines: lines.length,
             };
         });
+}
+
+// Function to create a scatterplot of commits by time of day
+function createScatterplot() {
+    const svg = d3.select('#chart')
+        .append('svg')
+        .attr('viewBox', `0 0 ${width} ${height}`)
+        .style('overflow', 'visible');
+
+    // Scales adjusted for margins
+    const xScale = d3.scaleTime()
+        .domain(d3.extent(commits, (d) => d.datetime))
+        .range([margin.left, width - margin.right])
+        .nice();
+
+    const yScale = d3.scaleLinear()
+        .domain([0, 24])
+        .range([height - margin.bottom, margin.top]);
+
+    // Create and add axes
+    const xAxis = d3.axisBottom(xScale);
+    const yAxis = d3.axisLeft(yScale)
+        .tickFormat((d) => `${d}:00`);  // Format Y-axis ticks as hours
+
+    svg.append('g')
+        .attr('transform', `translate(0, ${height - margin.bottom})`)
+        .call(xAxis);
+
+    svg.append('g')
+        .attr('transform', `translate(${margin.left}, 0)`)
+        .call(yAxis);
+
+    // Dots for the scatterplot
+    const dots = svg.append('g').attr('class', 'dots');
+
+    dots.selectAll('circle')
+        .data(commits)
+        .join('circle')
+        .attr('cx', (d) => xScale(d.datetime))
+        .attr('cy', (d) => yScale(d.hourFrac))
+        .attr('r', 5)
+        .attr('fill', 'steelblue');
 }
 
 // Event listener to ensure the script runs after the DOM content has loaded
