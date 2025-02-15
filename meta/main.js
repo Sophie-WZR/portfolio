@@ -42,7 +42,6 @@ function processCommits() {
 }
 
 // Function to create a scatterplot of commits by time of day
-// Function to create a scatterplot of commits by time of day
 function createScatterplot() {
     const svg = d3.select('#chart')
         .append('svg')
@@ -58,10 +57,14 @@ function createScatterplot() {
     const yScale = d3.scaleLinear()
         .domain([0, 24])
         .range([height - margin.bottom, margin.top]);
+    
 
     // Calculate the range of edited lines and create a radius scale
-    const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
-    const rScale = d3.scaleLinear().domain([minLines, maxLines]).range([2, 30]);
+    const rScale = d3.scaleSqrt() // Changed from scaleLinear to scaleSqrt
+        .domain([minLines, maxLines])
+        .range([2, 30]);
+
+    const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
 
     // Create gridlines BEFORE the axes for better layering
     const gridlines = svg.append('g')
@@ -88,7 +91,7 @@ function createScatterplot() {
     const dots = svg.append('g').attr('class', 'dots');
 
     dots.selectAll('circle')
-        .data(commits)
+        .data(sortedCommits)
         .join('circle')
         .attr('cx', (d) => xScale(d.datetime))
         .attr('cy', (d) => yScale(d.hourFrac))
