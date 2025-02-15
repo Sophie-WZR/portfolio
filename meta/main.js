@@ -88,10 +88,31 @@ function createScatterplot() {
         .attr('cx', (d) => xScale(d.datetime))
         .attr('cy', (d) => yScale(d.hourFrac))
         .attr('r', 5)
-        .attr('fill', 'steelblue');
+        .attr('fill', 'steelblue')
+        .on('mouseenter', (event, commit) => {
+            updateTooltipContent(commit);
+        })
+        .on('mouseleave', () => {
+            updateTooltipContent({});
+        });
 }
+
+// Function to update the tooltip content
+function updateTooltipContent(commit) {
+    const link = document.getElementById('commit-link');
+    const date = document.getElementById('commit-date');
+  
+    if (Object.keys(commit).length === 0) return;
+  
+    link.href = commit.url;
+    link.textContent = commit.id;
+    date.textContent = commit.datetime?.toLocaleString('en', {
+      dateStyle: 'full',
+    });
+  }
 
 // Event listener to ensure the script runs after the DOM content has loaded
 document.addEventListener('DOMContentLoaded', async () => {
     await loadData();
 });
+

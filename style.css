@@ -242,3 +242,35 @@ path {
   stroke: #ccc;  /* Light grey color for gridlines */
   stroke-opacity: 0.7;  /* Slightly transparent */
 }
+
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+  display: none; /* Initially hidden, shown on hover */
+}
+
+.info dt {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.info dd {
+  margin: 0;
+}
+
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
