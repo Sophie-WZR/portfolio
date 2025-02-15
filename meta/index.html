@@ -2,11 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CSV Data Visualization</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta</title>
+    <link rel="stylesheet" href="../style.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="../global.js"></script>
 </head>
 <body>
+
+    <h1>Meta</h1>
+    <!-- <p>This page includes stats about the code of this website.</p > -->
+
+    <!-- Content area for future meta-analysis visualizations -->
+    <div id="meta-content">
+        <!-- Future D3.js visualizations or code statistics will be inserted here -->
+    </div>
+
     <div id="stats"></div>
-    <script src="main.js"></script>
+    <h2>Commits by time of day</h2>
+    <div id="chart"></div>
+
+    <dl id="commit-tooltip" class="info tooltip">
+        <dt>Commit</dt>
+        <dd>
+          <a href="" id="commit-link" target="_blank"></a >
+        </dd>
+      
+        <dt>Date</dt>
+        <dd id="commit-date"></dd>
+      
+        <dt>Time</dt>
+        <dd id="commit-time"></dd>
+    
+        <dt>Author</dt>
+        <dd id="commit-author"></dd>
+    
+        <dt>Lines Edited</dt>
+        <dd id="commit-lines"></dd>
+    </dl>
+
 </body>
 </html>
