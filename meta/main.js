@@ -42,6 +42,7 @@ function processCommits() {
 }
 
 // Function to create a scatterplot of commits by time of day
+// Function to create a scatterplot of commits by time of day
 function createScatterplot() {
     const svg = d3.select('#chart')
         .append('svg')
@@ -57,6 +58,10 @@ function createScatterplot() {
     const yScale = d3.scaleLinear()
         .domain([0, 24])
         .range([height - margin.bottom, margin.top]);
+
+    // Calculate the range of edited lines and create a radius scale
+    const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
+    const rScale = d3.scaleLinear().domain([minLines, maxLines]).range([2, 30]);
 
     // Create gridlines BEFORE the axes for better layering
     const gridlines = svg.append('g')
@@ -79,7 +84,7 @@ function createScatterplot() {
         .attr('transform', `translate(${margin.left}, 0)`)
         .call(yAxis);
 
-    // Dots for the scatterplot
+    // Dots for the scatterplot with dynamic radius based on edited lines
     const dots = svg.append('g').attr('class', 'dots');
 
     dots.selectAll('circle')
@@ -87,15 +92,19 @@ function createScatterplot() {
         .join('circle')
         .attr('cx', (d) => xScale(d.datetime))
         .attr('cy', (d) => yScale(d.hourFrac))
-        .attr('r', 5)
+        .attr('r', (d) => rScale(d.totalLines))  // Use the radius scale for dot size
         .attr('fill', 'steelblue')
-        .on('mouseenter', (event, commit) => {
-            updateTooltipContent(commit);
-            updateTooltipVisibility(true);  // Show tooltip on mouse enter
+        .style('fill-opacity', 0.7)  // Initial opacity for overlapping dots
+        .on('mouseenter', function(event, d) {
+            d3.select(event.currentTarget).style('fill-opacity', 1);  // Full opacity on hover
+            updateTooltipContent(d);
+            updateTooltipVisibility(true);
+            updateTooltipPosition(event);
         })
-        .on('mouseleave', () => {
+        .on('mouseleave', function() {
+            d3.select(event.currentTarget).style('fill-opacity', 0.7);  // Restore opacity on mouse leave
             updateTooltipContent({});
-            updateTooltipVisibility(false);  // Hide tooltip on mouse leave
+            updateTooltipVisibility(false);
         });
 }
 
@@ -119,8 +128,13 @@ function updateTooltipVisibility(isVisible) {
     tooltip.hidden = !isVisible;
 }
 
+function updateTooltipPosition(event) {
+    const tooltip = document.getElementById('commit-tooltip');
+    tooltip.style.left = `${event.clientX}px`;
+    tooltip.style.top = `${event.clientY}px`;
+}
+
 // Event listener to ensure the script runs after the DOM content has loaded
 document.addEventListener('DOMContentLoaded', async () => {
     await loadData();
 });
-
