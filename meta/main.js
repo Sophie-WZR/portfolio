@@ -12,8 +12,26 @@ async function loadData() {
         datetime: new Date(row.datetime)  // Converts 'datetime' string to Date object
     }));
 
-    processCommits();  // Process commits after loading data
-    console.log(commits);  // Log commits to check the structure
+    displayStats();  // Call displayStats to show the summary
+}
+
+// Function to display summary stats
+function displayStats() {
+    // Process commits first
+    processCommits();
+
+    // Create the dl element for displaying stats
+    const dl = d3.select('#stats').append('dl').attr('class', 'stats');
+
+    // Add total LOC
+    dl.append('dt').html('Total <abbr title="Lines of code">LOC</abbr>');
+    dl.append('dd').text(data.length);
+
+    // Add total commits
+    dl.append('dt').text('Total commits');
+    dl.append('dd').text(commits.length);
+
+    // Add more stats as needed...
 }
 
 // Function to process commits data
@@ -22,7 +40,7 @@ function processCommits() {
         .map(([commit, lines]) => {
             let first = lines[0];
             let { author, date, time, timezone, datetime } = first;
-            let ret = {
+            return {
                 id: commit,
                 url: 'https://github.com/vis-society/lab-7/commit/' + commit,
                 author,
@@ -33,13 +51,6 @@ function processCommits() {
                 hourFrac: datetime.getHours() + datetime.getMinutes() / 60,
                 totalLines: lines.length,
             };
-
-            Object.defineProperty(ret, 'lines', {
-                value: lines,
-                enumerable: false  // Make 'lines' non-enumerable so it doesn't appear in console.log
-            });
-
-            return ret;
         });
 }
 

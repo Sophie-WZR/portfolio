@@ -226,3 +226,13 @@ path {
   --color: oklch(60% 45% 0) !important; /*highlight color*/
   background-color: var(--color); /* Override background */
 }
+
+
+.stats dt {
+  font-weight: bold;
+}
+
+.stats dd {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
