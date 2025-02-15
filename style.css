@@ -244,6 +244,7 @@ path {
 }
 
 circle {
+  fill: var(--press-color);
   transition: 200ms;
   transform-origin: center;
   transform-box: fill-box;
@@ -283,11 +284,24 @@ circle:hover {
   color: #666;
 }
 
+
 dl.info {
-  /* ... other styles ... */
-  transition-duration: 500ms;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 0.2rem;
+  padding: 1rem;
+  background-color: var(--button-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  transition-duration: 400ms;
   transition-property: opacity, visibility;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
+
 
 dl.info[hidden]:not(:hover, :focus-within) {
   opacity: 0;
@@ -304,7 +318,7 @@ dl.info[hidden]:not(:hover, :focus-within) {
 
 .selection {
   fill-opacity: 0.1;
-  stroke: rgba(252, 255, 157, 0.991);
+  stroke: rgba(0, 0, 0, 0.991);
   stroke-opacity: 0.7;
   stroke-dasharray: 5 3;
   animation: marching-ants 2s linear infinite;
@@ -317,5 +331,23 @@ dl.info[hidden]:not(:hover, :focus-within) {
 }
 
 circle.selected {
-  fill: #ced5f9;
+  fill: #c6cdef;
+}
+
+
+/* Language Breakdown Styles */
+#language-breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: center; /* Center the text */
+}
+
+#language-breakdown dt {
+  font-weight: bold;
+}
+
+#language-breakdown dd {
+  margin: 0;
 }
