@@ -243,28 +243,6 @@ path {
   stroke-opacity: 0.7;  /* Slightly transparent */
 }
 
-.tooltip {
-  position: fixed;
-  top: 1em;
-  left: 1em;
-  background: white;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-  z-index: 1000;
-  display: none; /* Initially hidden, shown on hover */
-}
-
-.info dt {
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-.info dd {
-  margin: 0;
-}
-
 circle {
   transition: 200ms;
   transform-origin: center;
@@ -274,3 +252,34 @@ circle {
 circle:hover {
   transform: scale(1.5);
 }
+
+
+.tooltip {
+  position: fixed;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  pointer-events: none; /* Make the tooltip non-interactive */
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.3s;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: max-content auto;
+  gap: 4px 10px;
+  font-size: 14px;
+}
+
+.info dt {
+  font-weight: bold;
+  color: #333;
+}
+
+.info dd {
+  margin: 0;
+  color: #666;
+}
+
