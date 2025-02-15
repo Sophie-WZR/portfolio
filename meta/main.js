@@ -91,9 +91,11 @@ function createScatterplot() {
         .attr('fill', 'steelblue')
         .on('mouseenter', (event, commit) => {
             updateTooltipContent(commit);
+            updateTooltipVisibility(true);  // Show tooltip on mouse enter
         })
         .on('mouseleave', () => {
             updateTooltipContent({});
+            updateTooltipVisibility(false);  // Hide tooltip on mouse leave
         });
 }
 
@@ -109,7 +111,13 @@ function updateTooltipContent(commit) {
     date.textContent = commit.datetime?.toLocaleString('en', {
       dateStyle: 'full',
     });
-  }
+}
+
+// Function to control the visibility of the tooltip
+function updateTooltipVisibility(isVisible) {
+    const tooltip = document.getElementById('commit-tooltip');
+    tooltip.hidden = !isVisible;
+}
 
 // Event listener to ensure the script runs after the DOM content has loaded
 document.addEventListener('DOMContentLoaded', async () => {
