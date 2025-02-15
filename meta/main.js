@@ -87,7 +87,9 @@ function createScatterplot() {
         .attr('transform', `translate(${margin.left}, 0)`)
         .call(yAxis);
     
-    brushSelector();
+    d3.select(svg).call(d3.brush());
+
+    svg.selectAll('.dots, .overlay ~ *').raise();
 
     // Dots for the scatterplot with dynamic radius based on edited lines
     const dots = svg.append('g').attr('class', 'dots');
