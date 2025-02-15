@@ -86,6 +86,8 @@ function createScatterplot() {
     svg.append('g')
         .attr('transform', `translate(${margin.left}, 0)`)
         .call(yAxis);
+    
+    brushSelector();
 
     // Dots for the scatterplot with dynamic radius based on edited lines
     const dots = svg.append('g').attr('class', 'dots');
@@ -136,6 +138,12 @@ function updateTooltipPosition(event) {
     tooltip.style.left = `${event.clientX}px`;
     tooltip.style.top = `${event.clientY}px`;
 }
+
+// Function to set up brushing
+function brushSelector() {
+    const svg = document.querySelector('svg'); // Ensure the SVG has been created
+    d3.select(svg).call(d3.brush()); // Apply the D3 brush
+  }  
 
 // Event listener to ensure the script runs after the DOM content has loaded
 document.addEventListener('DOMContentLoaded', async () => {
