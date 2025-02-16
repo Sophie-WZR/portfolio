@@ -10,11 +10,11 @@ const navLinks = $$("nav a");
 // Step 3
 
 let pages = [
-    { url: '', title: 'Home' },
-    { url: 'projects/', title: 'Projects' },
-    { url: 'contact/', title: 'Contact' },
-    { url: 'resume/', title: 'Resume' },
-    { url: 'meta/', title: 'Meta' },
+    {url: "index.html", title: 'Home'},
+    {url: "contact/index.html", title: 'Contact'},
+    {url: "projects/index.html", title: "Projects"},
+    {url: "resume/index.html", title: "Resume"},
+    {url: "meta/index.html", title: "Meta"},
     { url: 'https://github.com/Sophie-WZR', title: 'GitHub' }
   ];
   
