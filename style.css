@@ -255,15 +255,18 @@ circle:hover {
 }
 
 
+
 .tooltip {
   position: fixed;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  border-radius: 5px;
+  top: 1em;
+  left: 1em;
+  padding: 5px; /* Reduce padding */
+  background-color: rgba(138, 178, 248, 0.95);
+  border: 1px solid #a1a9df;
+  border-radius: 3px; /* Reduce border radius */
+  font-size: 12px; /* Decrease font size */
   pointer-events: none; /* Make the tooltip non-interactive */
-  opacity: 0; /* Start hidden */
+  opacity: 0.8;
   transition: opacity 0.3s;
 }
 
@@ -290,9 +293,9 @@ dl.info {
   grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   gap: 0.2rem;
   padding: 1rem;
-  background-color: black;
+  background-color: rgb(215, 219, 255);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
+  border-radius: 5px;
   position: fixed;
   top: 1em;
   left: 1em;
