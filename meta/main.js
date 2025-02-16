@@ -306,3 +306,4 @@ function updateTooltipPosition(event) {
 
 // Call the loadData function to test it out
 loadData();
+
