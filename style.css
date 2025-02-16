@@ -290,7 +290,7 @@ dl.info {
   grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   gap: 0.2rem;
   padding: 1rem;
-  background-color: var(--button-color);
+  background-color: black;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   position: fixed;
