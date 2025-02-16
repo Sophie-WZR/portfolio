@@ -244,7 +244,7 @@ path {
 }
 
 circle {
-  fill: var(--press-color);
+  fill: #ffcdda;
   transition: 200ms;
   transform-origin: center;
   transform-box: fill-box;
