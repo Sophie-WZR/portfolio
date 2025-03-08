@@ -311,6 +311,20 @@ dl.info[hidden]:not(:hover, :focus-within) {
   visibility: hidden;
 }
 
+#commit-tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  background: var(--light-brown-color);
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  pointer-events: none; /* Prevents cursor interference */
+  
+  transition: opacity 200ms ease-in-out;
+  border: 2px solid var(--border-color);
+}
 
 @keyframes marching-ants {
   to {
@@ -374,9 +388,6 @@ circle.selected {
   margin-top: 5px; /* Add spacing */
 }
 
-@starting-style {
-  r: 0;
-}
 
 .files {
   display: flex;
