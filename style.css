@@ -354,3 +354,212 @@ circle.selected {
 #language-breakdown dd {
   margin: 0;
 }
+
+
+
+#filter_ui {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  width: 100%;
+}
+
+#commit_slider {
+  width: 100%; /* Make the slider span full width */
+}
+
+#commit_time {
+  display: block;  /* Push to a new line */
+  text-align: right; /* Align text to the left */
+  font-weight: bold;
+  margin-top: 5px; /* Add spacing */
+}
+
+@starting-style {
+  r: 0;
+}
+
+.files {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f9f9f9;
+  max-width: 600px;
+  max-width: 100%;
+  min-width: 600px;
+  box-sizing: border-box;
+}
+
+.commit-group {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.file-row {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  gap: 5px;
+}
+
+.file-row p {
+  font-size: 14px;
+  color: #444;
+  margin: 0;
+  
+}
+
+.file-visualization {
+  display: flex;
+  flex-wrap: wrap; /* Allow dots to wrap to new lines */
+  align-items: center;
+  gap: 3px; /* Adjust spacing between dots */
+  max-width: 100%; /* Ensure it doesn’t stretch too far */
+}
+
+.line-dot {
+  display: inline-block;
+  width: 10px; /* Adjust circle size */
+  height: 10px;
+  border-radius: 50%;
+}
+
+
+
+
+#scrollytelling {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+
+#scroll-container-file {
+  grid-column: 1;
+  position: relative;
+  width: 400px; /* Set a fixed width to prevent movement */
+  max-width: 100%; /* Prevents it from exceeding the screen */
+  min-width: 300px; /* Ensures it doesn't shrink too much */
+  height: 350px; /* Keep height consistent */
+  overflow-y: auto; /* Enable smooth scrolling */
+  border: 1px solid #ccc;
+
+  background: white; /* Keep it visually stable */
+
+}
+
+
+#spacer-file {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: none; /* transparent */
+  pointer-events: none;
+}
+
+#items-container-file {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.item {
+  height: 30px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-bottom: 2px solid #eee;
+}
+.commit-item-file {
+  background: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  width: 100%;
+  min-height: 50px; /* Set a reasonable minimum height */
+}
+
+.commit-item-file p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: normal; /* Ensure text wraps */
+}
+
+.commit-item-file a {
+  color: steelblue;
+  text-decoration: none;
+}
+
+.commit-item-file a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+/* feel free to play with this to make your scrolly more seemless with your plot */
+#scroll-container {
+  grid-column: 1;
+  position: relative;
+  width: 95%;
+  height: 350px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  margin-bottom: 50px;
+}
+
+#chart {
+  grid-column: 2;
+}
+
+#spacer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: none; /* transparent */
+  pointer-events: none;
+}
+
+#items-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.item {
+  height: 30px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-bottom: 2px solid #eee;
+}
+
+.commit-item {
+  background: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  width: 100%;
+  min-height: 50px; /* Set a reasonable minimum height */
+}
+
+.commit-item p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: normal; /* Ensure text wraps */
+}
+
+.commit-item a {
+  color: steelblue;
+  text-decoration: none;
+}
+
+.commit-item a:hover {
+  text-decoration: underline;
+}

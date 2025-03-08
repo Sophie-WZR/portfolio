@@ -3,48 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meta</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
-
     <h1>Meta</h1>
+    <p>This page includes stats about the code of this website.</p>
 
-      <!-- Placeholder for displaying data -->
+    <div id="filter_ui">
+        <label for="commit_slider">Show commits until:</label>
+        <input type="range" id="commit_slider" min="0" max="100" value="100">
+        <time id="commit_time"></time>
+    </div>
+    
+    
+    <h2>Summary</h2>
     <div id="stats"></div>
 
-    <!-- Scatterplot title and container -->
-    <h2>Commits by time of day</h2>
-    <div id="chart"></div>
+    <div id="scrollytelling">
+        <div id="scroll-container-file">
+            <div id="spacer-file"></div>
+            <div id="items-container-file"></div>
+        </div>
 
-    <!-- Tooltip for commit information -->
-    <dl id="commit-tooltip" class="info tooltip" hidden>
+        <dl class="files"></dl>
+
+
+        <h2>Commits by time of day</h2>
+        <div id="scroll-container">
+            <div id="spacer"></div>
+            <div id="items-container"></div>
+        </div>
+        <!-- our old scatterplot div -->
+        
+        <div id="chart"></div>
+    </div>
+    
+
+    <dl id="commit-tooltip" class="info tooltip">
         <dt>Commit</dt>
         <dd>
-            <a href="" id="commit-link" target="_blank"></a>
+          <a href="" id="commit-link" target="_blank"></a>
         </dd>
+      
         <dt>Date</dt>
         <dd id="commit-date"></dd>
-        <dt>Time</dt>
-        <dd id="commit-time"></dd>
-        <dt>Author</dt>
-        <dd id="commit-author"></dd>
-        <dt>Lines Edited</dt>
-        <dd id="commit-lines"></dd>
+      
+        <!-- Add: Time, author, lines edited -->
     </dl>
-    
-    <div id="stats"></div>
-    <div id="chart"></div>
+
     <p id="selection-count">No commits selected</p>
-    <dl id="language-breakdown" class="stats"></dl>
+    <p id='language-breakdown'></p>
 
 
-    <!-- Import D3.js -->
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-
-    <!-- Import your main.js file -->
-    <script src="main.js"></script>
     <script type="module" src="../global.js"></script>
-  
+    <script type="module" src="main.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </body>
 </html>
