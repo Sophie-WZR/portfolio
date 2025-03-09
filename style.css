@@ -456,7 +456,7 @@ circle.selected {
   overflow-y: auto; /* Enable smooth scrolling */
   border: 1px solid #ccc;
 
-  background: white; /* Keep it visually stable */
+  background: white;
 
 }
 
@@ -489,7 +489,7 @@ circle.selected {
   border-radius: 6px;
   border: 1px solid #ddd;
   width: 100%;
-  min-height: 50px; /* Set a reasonable minimum height */
+  min-height: 50px;
 }
 
 .commit-item-file p {
@@ -518,7 +518,7 @@ circle.selected {
   width: 95%;
   height: 350px;
   overflow-y: scroll;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   margin-bottom: 50px;
 }
 
@@ -573,4 +573,47 @@ circle.selected {
 
 .commit-item a:hover {
   text-decoration: underline;
+}
+
+
+
+/* Remove background color and borders from commit file container */
+.files {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Make commit items transparent */
+.commit-item-file {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Make commit item background transparent */
+.commit-item {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Remove the background color of the scroll container */
+#scroll-container-file {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Remove borders from visualization */
+.file-visualization {
+  background: transparent !important;
+}
+
+/* Remove gray background from individual commits */
+.file-row p {
+  background: transparent !important;
+  color: inherit; /* Ensure text color remains readable */
+}
+
+/* Remove any extra gray box effects */
+.commit-group {
+  background: transparent !important;
+  border-bottom: none !important;
 }
